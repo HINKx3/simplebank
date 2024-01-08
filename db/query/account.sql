@@ -5,8 +5,7 @@ INSERT INTO account (
   currency
 ) VALUES (
   $1, $2, $3
-)
-RETURNING *;
+) RETURNING *;
 
 -- name: GetAccount :one
 SELECT * FROM account
@@ -17,8 +16,9 @@ SELECT * FROM account
 WHERE id = $1 LIMIT 1
 FOR NO KEY UPDATE;
 
--- name: ListAccount :many
+-- name: ListAccounts :many
 SELECT * FROM account
+WHERE owner = $1
 ORDER BY id
 LIMIT $2
 OFFSET $3;
@@ -35,6 +35,6 @@ SET balance = balance + sqlc.arg(amount)
 WHERE id = sqlc.arg(id)
 RETURNING *;
 
--- name: DeleteAcccount :exec
+-- name: DeleteAccount :exec
 DELETE FROM account
 WHERE id = $1;
