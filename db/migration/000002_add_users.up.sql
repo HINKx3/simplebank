@@ -7,6 +7,6 @@ CREATE TABLE "users" (
   "created_at" timestamptz NOT NULL DEFAULT 'now()'
 );
 
-ALTER TABLE "account" ADD FOREIGN KEY ("owner") REFERENCES "users" ("username");
+ALTER TABLE "accounts" ADD FOREIGN KEY ("owner") REFERENCES "users" ("username");
 
-CREATE UNIQUE INDEX ON "account" ("owner", "currency");
+CREATE UNIQUE INDEX ON "accounts" ("owner", "currency");
