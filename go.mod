@@ -1,4 +1,4 @@
-module github.com/techschool/simplebank
+module github.com/HINKx3/simplebank
 
 go 1.21
 
